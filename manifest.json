@@ -9,6 +9,14 @@
     "imageUrl": "https://raw.githubusercontent.com/NeptuneHub/audiomuse-ai-plugin/master/audiomuseai.png",
     "versions": [
       {
+        "version": "0.2.2.0",
+        "changelog": "- Add diagnostic logging for failed AudioMuse similarity responses (33c95f4)\n- ci: Update manifest.json for release v0.2.1 (b09b431)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/domi-devel/audiomuse-ai-plugin/releases/download/v0.2.2/audiomuse-ai_0.2.2.0.zip",
+        "checksum": "01da5c0fb9fe6baf30c251b6582f966f",
+        "timestamp": "2026-05-22T00:28:09Z"
+      },
+      {
         "version": "0.2.1.0",
         "changelog": "- Pin Jellyfin packages to 10.11.8; revert GetUsers to Users (ae20e9a)\n- fixup version (dcbaf14)\n- ci: Update manifest.json for release v0.2.0 (7f92142)",
         "targetAbi": "10.11.0.0",
