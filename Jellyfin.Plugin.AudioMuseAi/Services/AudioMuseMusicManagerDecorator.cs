@@ -249,9 +249,10 @@ namespace Jellyfin.Plugin.AudioMuseAi.Services
                                 .ToList();
 
                             _logger.LogInformation(
-                                "AudioMuseAI: Got {Count} new items from AudioMuse for seed {SeedId}.",
+                                "AudioMuseAI: Got {Count} new items from AudioMuse for seed {SeedId} ({AudioMuseIds} ids returned).",
                                 newItems.Count,
-                                seed.Id);
+                                seed.Id,
+                                ids.Count);
 
                             foreach (var newItem in newItems)
                             {
@@ -266,6 +267,24 @@ namespace Jellyfin.Plugin.AudioMuseAi.Services
                                 }
                             }
                         }
+                        else
+                        {
+                            _logger.LogWarning(
+                                "AudioMuseAI: Unexpected response shape for seed {SeedId} (expected array, got {Kind}): {Body}",
+                                seed.Id,
+                                doc.RootElement.ValueKind,
+                                json.Length > 300 ? json[..300] : json);
+                        }
+                    }
+                    else
+                    {
+                        var body = response is null ? "(null response)" :
+                            await response.Content.ReadAsStringAsync(CancellationToken.None).ConfigureAwait(false);
+                        _logger.LogWarning(
+                            "AudioMuseAI: Non-success response for seed {SeedId}: HTTP {StatusCode} — {Body}",
+                            seed.Id,
+                            response?.StatusCode,
+                            body.Length > 300 ? body[..300] : body);
                     }
                 }
                 catch (HttpRequestException ex)
