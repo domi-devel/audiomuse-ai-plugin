@@ -19,9 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Your original, working packages. -->
-    <PackageReference Include="Jellyfin.Controller" Version="10.11.*-*" />
-    <PackageReference Include="Jellyfin.Model" Version="10.11.*-*" />
+    <PackageReference Include="Jellyfin.Controller" Version="10.11.8" />
+    <PackageReference Include="Jellyfin.Model" Version="10.11.8" />
     
     <!--
       FIX: Pin Microsoft.Extensions.DependencyInjection to 9.0.11 to satisfy
